@@ -13,4 +13,5 @@ public interface AddressbookInterface {
 
     String deleteContactById(int id);
 
+    String updateContactById(int id, ContactDto contactDto);
 }

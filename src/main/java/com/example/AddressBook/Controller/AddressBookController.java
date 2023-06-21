@@ -19,13 +19,17 @@ public class AddressBookController {
     }
 
     @GetMapping("/getContactById")
-    public Contact getContactById(@RequestParam int id){
+    public Contact getContactById(@RequestParam int id) {
         return addressbookInterface.getContactById(id);
     }
 
     @DeleteMapping("/deleteContactById")
-    public String deleteContactById(@RequestParam int id){
+    public String deleteContactById(@RequestParam int id) {
         return addressbookInterface.deleteContactById(id);
     }
 
+    @PutMapping("/updateContactById")
+    public String updateContactById(@RequestParam int id, @RequestBody ContactDto contactDto) {
+        return addressbookInterface.updateContactById(id, contactDto);
+    }
 }

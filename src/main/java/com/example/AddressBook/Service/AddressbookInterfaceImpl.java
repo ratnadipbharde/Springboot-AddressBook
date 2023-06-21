@@ -28,12 +28,23 @@ public class AddressbookInterfaceImpl implements AddressbookInterface {
 
     @Override
     public String deleteContactById(int id) {
-      if (contactRepo.existsById(id)){
-          contactRepo.deleteById(id);
-          return "delete...";
-      }
-      else {
-          return "contact not exist";
-      }
+        if (contactRepo.existsById(id)) {
+            contactRepo.deleteById(id);
+            return "delete...";
+        } else {
+            return "contact not exist";
+        }
+    }
+
+    @Override
+    public String updateContactById(int id, ContactDto contactDto) {
+        if (contactRepo.existsById(id)) {
+            Contact contact = modelMapper.map(contactDto, Contact.class);
+            contact.setId(id);
+            contactRepo.save(contact);
+            return "contact update...";
+        } else {
+            return "contact not exist...";
+        }
     }
 }
