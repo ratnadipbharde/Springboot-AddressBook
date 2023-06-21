@@ -11,6 +11,7 @@ import lombok.Getter;
 @Entity
 public class Contact {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String firstName;
     private String lastName;
