@@ -20,4 +20,20 @@ public class AddressbookInterfaceImpl implements AddressbookInterface {
         contactRepo.save(modelMapper.map(contactDto, Contact.class));
         return "contact save...";
     }
+
+    @Override
+    public Contact getContactById(int id) {
+        return contactRepo.findById(id).orElseThrow();
+    }
+
+    @Override
+    public String deleteContactById(int id) {
+      if (contactRepo.existsById(id)){
+          contactRepo.deleteById(id);
+          return "delete...";
+      }
+      else {
+          return "contact not exist";
+      }
+    }
 }
