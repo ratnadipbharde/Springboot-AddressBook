@@ -24,15 +24,15 @@ public class AddressbookImpl implements AddressbookInterface {
 
     @Override
     public ResponseDto addContact(ContactDto contactDto) {
-        try {
+     
             Contact contact = contactRepo.save(modelMapper.map(contactDto, Contact.class));
             ResponseDto response = new ResponseDto();
             response.setContact(contact);
             response.setMessage("User added successfully");
             return response;
-        } catch (Exception ex) {
-            throw new CustomException("Failed to add user: ");
-        }
+
+           // throw new CustomException("Failed to add user: ");
+
     }
 
     @Override
